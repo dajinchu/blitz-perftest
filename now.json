@@ -1,4 +1,5 @@
 {
+  "regions": ["iad1"],
   "env": {
     "DATABASE_URL": "@store-example-db"
   },
