@@ -1,0 +1,12 @@
+config:
+  target: "https://blitz-ex-store.dajinchu.now.sh"
+  phases:
+    - duration: 10
+      arrivalRate: 10
+scenarios:
+  - flow:
+      - post:
+          url: "/api/products/queries/getProducts"
+          json:
+            params:
+              first: 4
