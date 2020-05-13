@@ -39,32 +39,33 @@ artillery quick http://localhost:3000/api/test -r 20 -d 30
 
 # Vercel + Digital Ocean
 ```
-artillery quick https://perftest.dajinchu.now.sh/api/test -r 20 -d 30
+artillery quick https://perftest.now.sh/api/test -r 20 -d 30
 
-  Summary report @ 23:46:34(-0400) 2020-05-12
   Scenarios launched:  600
   Scenarios completed: 600
   Requests completed:  600
-  Mean response/sec: 19.41
+  Mean response/sec: 19.4
   Response time (msec):
-    min: 298.3
-    max: 4133.6
-    median: 329.5
-    p95: 2383
-    p99: 3518.5
+    min: 440.6
+    max: 1724.6
+    median: 613.6
+    p95: 692.1
+    p99: 1260
   Scenario counts:
     0: 600 (100%)
   Codes:
-    200: 499
-    500: 101
+    200: 290
+    500: 310
 ```
 
-Why are 1/6 of them throwing 500's?
+Why are 1/2 of them throwing 500's?
 `FATAL: remaining connection slots are reserved for non-replication superuser connections`
 
-I believe this is because prisma database conneciton pooling fails on a serverless environment.
+This is because prisma database conneciton pooling fails on a serverless environment.
 
 ## w/DigitalOcean's Connection Pool (pgBouncer)
+
+PrismaClient has to set `forceTransactions` or it wil 500 a ton https://github.com/prisma/prisma-client-js/issues/503.
 ```
   Scenarios launched:  600
   Scenarios completed: 600
@@ -83,3 +84,40 @@ I believe this is because prisma database conneciton pooling fails on a serverle
     500: 36
 ```
 Better, but still failing. # of 500s varies from each time I run it.
+
+# DigitalOcean Droplet + DB
+
+```
+  Scenarios launched:  600
+  Scenarios completed: 600
+  Requests completed:  600
+  Mean response/sec: 19.72
+  Response time (msec):
+    min: 25.8
+    max: 1094.7
+    median: 33.2
+    p95: 82.2
+    p99: 110.6
+  Scenario counts:
+    0: 600 (100%)
+  Codes:
+    200: 600
+```
+
+# Localhost + AWS RDS
+```
+  Scenarios launched:  600
+  Scenarios completed: 600
+  Requests completed:  600
+  Mean response/sec: 19.72
+  Response time (msec):
+    min: 37.9
+    max: 1293.9
+    median: 43.8
+    p95: 312.2
+    p99: 873
+  Scenario counts:
+    0: 600 (100%)
+  Codes:
+    200: 600
+    ```
