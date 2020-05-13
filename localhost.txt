@@ -1,6 +1,0 @@
-  Response time (msec):
-    min: 24.3
-    max: 53.2
-    median: 26.6
-    p95: 39
-    p99: 42.9
