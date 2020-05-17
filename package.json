@@ -16,7 +16,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && pretty-quick --staged",
+      "pre-commit": "pretty-quick --staged",
       "pre-push": "blitz test"
     }
   },
@@ -29,7 +29,9 @@
   "dependencies": {
     "@prisma/cli": "2.0.0-beta.5",
     "@prisma/client": "2.0.0-beta.5",
-    "blitz": "latest",
+    "@types/pg": "^7.14.3",
+    "blitz": "^0.10.0",
+    "pg": "^8.2.1",
     "react": "experimental",
     "react-dom": "experimental",
     "typescript": "3.9.2"
@@ -37,15 +39,12 @@
   "NOTE": "Next.js dependency is currently only required for deploying to zeit",
   "devDependencies": {
     "@types/react": "16.9.35",
-    "@typescript-eslint/eslint-plugin": "2.33.0",
-    "@typescript-eslint/parser": "2.33.0",
     "babel-eslint": "10.1.0",
     "eslint": "6.8.0",
     "eslint-config-react-app": "5.2.1",
     "eslint-plugin-flowtype": "4.7.0",
     "eslint-plugin-import": "2.20.2",
     "eslint-plugin-jsx-a11y": "6.2.3",
-    "eslint-plugin-react": "7.19.0",
     "eslint-plugin-react-hooks": "3.0.0",
     "husky": "4.2.5",
     "lint-staged": "10.2.2",
