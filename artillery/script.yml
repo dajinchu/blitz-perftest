@@ -1,0 +1,12 @@
+config:
+  target: https://perftest.now.sh
+  phases:
+    - duration: 60
+      arrivalRate: 50
+  plugins:
+    cloudwatch:
+      namespace: blitz-perftest
+scenarios:
+  - flow:
+      - get:
+          url: "/api/test"
