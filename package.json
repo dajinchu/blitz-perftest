@@ -30,7 +30,7 @@
     "@prisma/cli": "2.0.0-beta.5",
     "@prisma/client": "2.0.0-beta.5",
     "@types/pg": "^7.14.3",
-    "blitz": "^0.10.0",
+    "blitz": "^0.45.3",
     "pg": "^8.2.1",
     "react": "experimental",
     "react-dom": "experimental",
